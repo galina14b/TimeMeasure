@@ -68,8 +68,9 @@ weekBtn.addEventListener('click', function (e) {
   let result = getFinalCount(new Date(dateBefore.value), nextDate);
   resultBlock.textContent = result;
 
-  // збереження отриманих результатів у сховищі
+  // збереження отриманих результатів у сховищі та виведення у таблицю
   let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
+  updateTable(data.start, data.end, data.result);
   setCountsToLocalStorage(data);
 });
 
@@ -84,6 +85,7 @@ monthBtn.addEventListener('click', function (e) {
 
   // збереження отриманих результатів у сховищі
   let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
+  updateTable(data.start, data.end, data.result);
   setCountsToLocalStorage(data);
 });
 
@@ -91,7 +93,6 @@ monthBtn.addEventListener('click', function (e) {
 // Розрахунок днів при натисканні 'Розрахувати'
 btn.addEventListener('click', function(e){
   e.preventDefault();
-  console.dir(e.target)
   let prevDate = new Date(dateBefore.value);
   let nextDate = new Date(dateAfter.value);
 
@@ -105,6 +106,7 @@ btn.addEventListener('click', function(e){
 
   // збереження отриманих результатів у сховищі
   let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
+  updateTable(data.start, data.end, data.result);
   setCountsToLocalStorage(data);
 })
 
@@ -175,12 +177,12 @@ function getWeekEndsCount(prev, next) {
 function getFinalCount(prev, next) {
   let result;
   if (allDaysCheck.checked) {
-    result = `Результат підрахунку усіх днів - ${timeCounter(getAllDaysCount(prev, next))}`;
+    result = `Усі дні, ${timeCounter(getAllDaysCount(prev, next))}`;
   }else if (weekDaysCheck.checked) {
-    result = `Результат підрахунку усіх будних днів - ${timeCounter(getWeekDaysCount(prev, next))}`;
+    result = `Будні дні, ${timeCounter(getWeekDaysCount(prev, next))}`;
 
   }else if (weekEndCheck.checked) {
-    result = `Результат підрахунку усіх вихідних днів - ${timeCounter(getWeekEndsCount(prev, next))}`;
+    result = `Вихідні дні, ${timeCounter(getWeekEndsCount(prev, next))}`;
   }
   return result;
 };
@@ -191,13 +193,26 @@ function setCountsToLocalStorage(data) {
   if (!savedData) {
     savedData = [];
   }
-  if (savedData.length < 10) {
-    savedData.push(data);
-    localStorage.setItem('dates', JSON.stringify(savedData));
-  } else {
+  if (savedData.length >= 10) {
     savedData.shift();
-    savedData.push(data);
-    localStorage.setItem('dates', JSON.stringify(savedData));
-  }
+  } 
+
+  savedData.push(data);
+  localStorage.setItem('dates', JSON.stringify(savedData));
+
+}
+
+function updateTable(start, end, result) {
+
+  let element = `
+  <div class="table-item">
+    <div class="startDate">${start}</div>
+    <div class="endDate">${end}</div>
+    <div class="result">${result}</div>
+  </div>
+  `
+  resultTable.insertAdjacentHTML("beforeend", element);
+  
+
 }
 
