@@ -1,0 +1,167 @@
+body {
+  background-color: #A2BEC0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1A261F;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+h2, h3 {
+  font-weight: 400;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 50px;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 28px;
+}
+
+h1 span {
+  padding-left: 30px;
+}
+
+.app {
+  background-image: url(img/img1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  padding: 50px 50px 200px;
+  height: 100vh;
+  margin-bottom: 180px;
+}
+
+.inputs {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+  height: 60px;
+  justify-content: space-between;
+  
+}
+
+.inputs input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+button {
+  background-color: #3A787D;
+  width: 160px;
+  height: 40px;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.radio-days {
+  margin-bottom: 20px;
+}
+
+.radio-days>label {
+  padding-right: 30px;
+}
+
+.days-item {
+  padding: 5px 0;
+}
+
+.radio-units {
+  margin: 0 0 20px;
+}
+
+.unit-item {
+  padding: 5px 0;
+}
+
+.result-block {
+  margin: 20px 0;
+  font-size: 20px; 
+  font-style: italic; 
+  background-color: white;
+  max-width: 40%;
+  border-radius: 5px;
+  text-align: center;
+  padding: 14px;
+}
+
+.table {
+  max-width: 45%;
+}
+.table-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.table-titles {
+  background-color: #843D03;
+  color: #FFF;
+  padding: 10px 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.startDate, .endDate, .result {
+  padding: 5px;
+}
+
+@media all and (max-width:768px) {
+  .app {
+    background-image: none;
+    padding: 50px 30px 200px;
+  }
+  .inputs {
+    max-width: 100%;
+  }
+  .result-block {
+    max-width: 100%;
+  }
+
+  .table {
+    max-width: 100%;
+  }
+
+  h1 {
+    padding: 20px 30px;
+  }
+}
+
+@media all and (max-width: 425px) {
+  h1 {
+    padding: 20px 10px;
+  }
+
+  .app {
+    padding: 50px 10px 200px;
+  }
+
+  .radio-days {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons-block button {
+    margin: 10px 0;
+  }
+}
+
+@media all and (max-width: 375px) {
+  h1 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Застосунок для розрахунку часу">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/normalize.css">
+  <link rel="stylesheet" href="src/style.css">
+  <title>Time measure</title>
+</head>
+
+<body>
+  <div class="quote">
+    <h1>"Єдине, що нам належить у цьому житті, — це час." <span>Сенека</span></h1>
+  </div>
+  <div class="app">
+    <h2>Оберіть дати</h2>
+      <form action="" method="">
+
+        <div class="inputs">
+          <input type="date" name="dateBefore" id="dateBefore">
+          <input type="date" name="dateAfter" id="dateAfter">
+        </div>
+
+        <div class="radio-days">
+          <h3>Оберіть які дни бажаєте порахувати</h3>
+          <div class="days-item">
+            <input type="radio" id="allDays" name="countDays" value="allDays" checked>
+            <label for="allDays">Всі Дні</label>
+          </div>
+          <div class="days-item">
+            <input type="radio" id="weekDays" name="countDays" value="weekDays">
+            <label for="weekDays">Будні Дні</label>
+          </div>
+          <div class="days-item">
+            <input type="radio" id="weekEnd" name="countDays" value="weekEnd">
+            <label for="weekEnd">Вихідні Дні</label>
+          </div>
+        </div>
+
+        <div class="radio-units">
+          <div class="unit-item">
+            <input type="radio" id="days" name="unit" value="days" checked>
+            <label for="days">Порахувати кількість днів</label>
+          </div>
+          <div class="unit-item">
+            <input type="radio" id="hours" name="unit" value="hours">
+            <label for="hours">Порахувати кількість годин</label>
+          </div>
+          <div class="unit-item">
+            <input type="radio" id="minutes" name="unit" value="minutes">
+            <label for="minutes">Порахувати кількість хвилин</label>
+          </div>
+          <div class="unit-item">
+            <input type="radio" id="seconds" name="unit" value="seconds">
+            <label for="seconds">Порахувати кількість секунд</label>
+          </div>
+        </div>
+        
+        <div class="buttons-block">
+          <button type="submit" class="btn" disabled>Розрахувати</button>
+          <button class="weekBtn" disabled>Тиждень</button>
+          <button class="monthBtn" disabled>Місяць</button>
+        </div>
+  
+      </form>
+    
+      <h3>Проміжок часу між обраними датами:</h3>
+      <div class="result-block">
+      </div>
+    
+      <div class="table">
+        <div class="table-item">
+          <div class="table-titles">Початкова Дата</div>
+          <div class="table-titles">Кінцева Дата</div>
+          <div class="table-titles">Результат</div>
+        </div>
+        <div class="table-item">
+          <div class="startDate"></div>
+          <div class="endDate"></div>
+          <div class="result"></div>
+        </div>
+      </div>
+    
+  </div>
+  <script src="src/script.js"></script>
+</body>
+
+</html>
