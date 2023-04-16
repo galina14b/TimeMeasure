@@ -96,10 +96,12 @@ button {
 .table {
   max-width: 45%;
 }
+
 .table-item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  background-color: #A2BEC0;
 }
 
 .table-titles {
@@ -113,6 +115,12 @@ button {
 
 .startDate, .endDate, .result {
   padding: 5px;
+}
+
+@media all and (max-width: 1084px) {
+  .table {
+      max-width: 100%;
+    }
 }
 
 @media all and (max-width:768px) {
