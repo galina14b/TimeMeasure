@@ -14,7 +14,7 @@ h2, h3 {
 
 h1 {
   margin: 0;
-  padding: 20px 50px;
+  padding: 50px 50px 0;
   font-style: italic;
   font-weight: 200;
   font-size: 28px;
@@ -126,7 +126,7 @@ button {
 @media all and (max-width:768px) {
   .app {
     background-image: none;
-    padding: 50px 30px 200px;
+    padding: 20px 30px 200px;
   }
   .inputs {
     max-width: 100%;
@@ -140,17 +140,18 @@ button {
   }
 
   h1 {
-    padding: 20px 30px;
+    padding: 40px 30px 0;
   }
 }
 
-@media all and (max-width: 425px) {
+@media all and (max-width: 426px) {
   h1 {
-    padding: 20px 10px;
+    padding: 20px 10px 0;
+    font-size: 20px;
   }
 
   .app {
-    padding: 50px 10px 200px;
+    padding: 20px 10px 200px;
   }
 
   .radio-days {
@@ -165,11 +166,5 @@ button {
 
   .buttons-block button {
     margin: 10px 0;
-  }
-}
-
-@media all and (max-width: 375px) {
-  h1 {
-    font-size: 20px;
   }
 }
