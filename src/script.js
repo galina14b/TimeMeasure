@@ -1,12 +1,15 @@
 'use strict';
 
+let quoteBlock = document.querySelector('.quote-text');
+let messageBlock = document.querySelector('.message');
+
 // елементи інпутів та форми
 let form = document.querySelector('form');
 let dateBefore = document.querySelector('#dateBefore');
 let dateAfter = document.querySelector('#dateAfter');
 
 // елементи кнопок
-let btn = document.querySelector('.btn');
+let btn = document.querySelector('#btn');
 let weekBtn = document.querySelector('.weekBtn');
 let monthBtn = document.querySelector('.monthBtn');
 
@@ -14,6 +17,8 @@ let monthBtn = document.querySelector('.monthBtn');
 let allDaysCheck = document.getElementById('allDays');
 let weekDaysCheck = document.getElementById('weekDays');
 let weekEndCheck = document.getElementById('weekEnd');
+
+const select = document.getElementById('form-select');
 
 let daysCheck = document.getElementById('days');
 let hoursCheck = document.getElementById('hours');
@@ -26,8 +31,6 @@ let resultBlock = document.querySelector('.result-block');
 // елемент для виведення історії результатів
 let resultTable = document.querySelector('.table');
 
-
-
 // Опції, для виведення дати українською мовою
   let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -39,9 +42,9 @@ if (savedData) {
   for (let value of savedData) {
     let element = `
     <div class="table-item">
-      <div class="startDate">${value.start}</div>
-      <div class="endDate">${value.end}</div>
-      <div class="result">${value.result}</div>
+      <div class="table-frame">${new Date(value.start).toLocaleDateString('uk-UA', options)}</div>
+      <div class="table-frame">${new Date(value.end).toLocaleDateString('uk-UA', options)}</div>
+      <div class="table-frame">${value.result}</div>
     </div>
     `
     resultTable.insertAdjacentHTML("beforeend", element);
@@ -63,14 +66,26 @@ dateBefore.addEventListener('change', function () {
 // пресет, який додає 7 днів до обраної дати 
 weekBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  if (!selectedOption || selectedOption === 'none') {
+    messageBlock.textContent = "Будь ласка, оберіть одиницю часу";
+    select.style.border = "solid 2px red";
+    setTimeout((function () {
+      select.style.border = "#116466 solid 2px";
+      messageBlock.textContent = '';
+    }), 8000);
+    return
+  };
+
   const nextDate = new Date(dateBefore.value);
   nextDate.setDate(new Date(dateBefore.value).getDate() + 7);
+  dateAfter.value = new Date(nextDate.setDate(new Date(dateBefore.value).getDate() + 7)).toISOString().split('T')[0];
   let result = getFinalCount(new Date(dateBefore.value), nextDate);
   resultBlock.textContent = result;
+  resultBlock.classList.add('result-frame');
 
   // збереження отриманих результатів у сховищі та виведення у таблицю
-  let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
-  updateTable(data.start, data.end, data.result);
+  let data = { start: new Date(dateBefore.value).getTime(), end: nextDate.getTime(), result: result };
+  updateTable(new Date(dateBefore.value).toLocaleDateString('uk-UA', options), nextDate.toLocaleDateString('uk-UA', options), result);
   setCountsToLocalStorage(data);
 });
 
@@ -78,14 +93,28 @@ weekBtn.addEventListener('click', function (e) {
 // пресет, який додає місяць до обраної дати
 monthBtn.addEventListener('click', function (e) {
   e.preventDefault();
+
+  if (!selectedOption || selectedOption === 'none') {
+    messageBlock.textContent = "Будь ласка, оберіть одиницю часу";
+    select.style.border = "solid 2px red";
+    setTimeout((function () {
+      select.style.border = "#116466 solid 2px";
+      messageBlock.textContent = '';
+    }), 8000);
+    return
+  };
+
   const nextDate = new Date(dateBefore.value);
   nextDate.setMonth(new Date(dateBefore.value).getMonth() + 1);
+  dateAfter.value = new Date(nextDate.setMonth(new Date(dateBefore.value).getMonth() + 1)).toISOString().split('T')[0];
   let result = getFinalCount(new Date(dateBefore.value), nextDate);
   resultBlock.textContent = result;
+  resultBlock.classList.add('result-frame');
+
 
   // збереження отриманих результатів у сховищі
-  let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
-  updateTable(data.start, data.end, data.result);
+  let data = { start: new Date(dateBefore.value).getTime(), end: nextDate.getTime(), result: result };
+  updateTable(new Date(dateBefore.value).toLocaleDateString('uk-UA', options), nextDate.toLocaleDateString('uk-UA', options), result);
   setCountsToLocalStorage(data);
 });
 
@@ -97,18 +126,44 @@ btn.addEventListener('click', function(e){
   let nextDate = new Date(dateAfter.value);
 
   if (!dateAfter.value) {
-    alert("Будь ласка, введіть кінцеву дату");
+    messageBlock.textContent = "Будь ласка, введіть кінцеву дату";
+    dateAfter.style.border = "solid 2px red";
+    setTimeout((function () {
+      dateAfter.style.border = "#116466 solid 2px";
+      messageBlock.textContent = '';
+    }), 8000);
+    return
+  }
+
+  if (!selectedOption || selectedOption === 'none') {
+    messageBlock.textContent = "Будь ласка, оберіть одиницю часу";
+    select.style.border = "solid 2px red";
+    setTimeout((function () {
+      select.style.border = "#116466 solid 2px";
+      messageBlock.textContent = '';
+    }), 8000);
     return
   }
 
   let result = getFinalCount(prevDate, nextDate);
   resultBlock.textContent = result;
+  resultBlock.classList.add('result-frame');
 
   // збереження отриманих результатів у сховищі
-  let data = { start: new Date(dateBefore.value).toLocaleDateString('uk-UA', options), end: nextDate.toLocaleDateString('uk-UA', options), result: result };
-  updateTable(data.start, data.end, data.result);
+  let data = { start: new Date(dateBefore.value).getTime(), end: nextDate.getTime(), result: result };
+  updateTable(new Date(dateBefore.value).toLocaleDateString('uk-UA', options), nextDate.toLocaleDateString('uk-UA', options), result);
   setCountsToLocalStorage(data);
 })
+
+// визначення яку одиницю часу було обрано
+let selectedOption = '';
+select.addEventListener('change', function () {
+  
+    let selectedIndex = select.selectedIndex;
+    let options = select.options;
+    selectedOption = options[selectedIndex].id;
+    return selectedOption;
+});
 
 
 // функція для підрахунку часу в різних одиницях виміру
@@ -119,21 +174,21 @@ function timeCounter(number) {
   const oneMinute = 24 * 60;
   const oneSec = 24 * 60 * 60;
   
-  // процес розрахунку
-  
-  if(daysCheck.checked) {
+  // процес розрахунку     
+    
+  if(selectedOption === 'days') {
     return(`число днів: ${number}`);
   }
   
-  if (hoursCheck.checked) {
+  if (selectedOption === 'hours') {
     return(`число годин: ${number * oneHour}`);
   }
   
-  if (minutesCheck.checked) {
+  if (selectedOption === 'minutes') {
     return(`число хвилин: ${number * oneMinute}`);
   }
   
-  if (secondsCheck.checked) {
+  if (selectedOption === 'seconds') {
     return(`число секунд: ${number * oneSec}`);
   };
 };
@@ -202,17 +257,39 @@ function setCountsToLocalStorage(data) {
 
 }
 
+// функція, яка оновлює таблицю результатів
+
 function updateTable(start, end, result) {
 
   let element = `
   <div class="table-item">
-    <div class="startDate">${start}</div>
-    <div class="endDate">${end}</div>
-    <div class="result">${result}</div>
+    <div class="table-frame">${start}</div>
+    <div class="table-frame">${end}</div>
+    <div class="table-frame">${result}</div>
   </div>
   `
   resultTable.insertAdjacentHTML("beforeend", element);
-  
-
 }
+
+
+let quotes = ["Єдине, що нам належить у цьому житті, — це час.", "Час ніколи не лягає спати.",
+  "І випереджати час треба вчасно.", "Час безцінний. Гарненько подумай, на що ти його витрачаєш.",
+  "Невдале планування часу — це планування невдачі.", "Ми витрачаємо час, а воно не чекає…",
+  "Між успіхом і невдачею лежить прірва, ім’я якої “у мене немає часу.",
+  "Або ви керуєте вашим днем, або ваш день буде керувати вами.", "Коли ми витрачаємо час на планування, його стає більше."]
+
+// функція яка змінює цитату кожні 8 секунд
+
+function setQuote() {
+  let i = 0;
+  let quoteTimer = setInterval(function () {
+    if (i >= quotes.length) {
+    i = 0
+  } else {
+      quoteBlock.textContent = `"${ quotes[i++] }"`;
+  }
+}, 8000);
+}
+
+setQuote();
 

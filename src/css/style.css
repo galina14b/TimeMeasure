@@ -1,0 +1,433 @@
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: #116466;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  color: #2c3531;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.info-block {
+  max-width: 1024px;
+  width: 100%;
+  margin: 100px auto;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.quote {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.quote-text {
+  display: inline-block;
+  margin-left: 30px;
+  font-style: italic;
+  width: 500px;
+}
+
+.color-text {
+  color: #116466;
+}
+
+.wrapper-block {
+  padding: 50px;
+}
+
+.image-2 {
+  background-image: url(../img/images/img2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  margin: 50px auto;
+}
+
+.app-title {
+  max-width: 600px;
+}
+
+.icon {
+  width: 80px;
+  margin-right: 30px;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.inputs {
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 550px;
+}
+
+.radio-days-block {
+  margin-top: 60px;
+}
+
+.radio-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.radio-items>div {
+  padding: 0 10px;
+}
+
+.radio-days {
+  max-width: 700px;
+}
+
+.inputs input[type="date"] {
+  width: 200px;
+  height: 40px;
+  border: #116466 solid 2px;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #F7F2E8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+
+.option-input:hover {
+  background: #F7F2E8;
+}
+
+.option-input:checked {
+  background: #116466;
+}
+
+.option-input:checked::before {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  content: '\2713';
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #116466;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+.option-input.radio {
+  border-radius: 50%;
+}
+
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+.unit-item input[type="radio"] {
+  display: none;
+}
+
+.radio-units {
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+}
+
+#form-select {
+  margin-left: 45px;
+  box-shadow: none;
+  outline: none;
+  font-size: 20px;
+  height: 40px;
+  border: #116466 solid 2px;
+  cursor: pointer;
+}
+
+#form-select:focus {
+  border-color: #116466;
+  outline: 0;
+  box-shadow: none;
+}
+
+.buttons-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0 0;
+}
+
+.buttons-block button:disabled {
+  border: 3px solid #D9B08C;
+  color: #D9B08C;
+}
+
+.buttons-block button {
+  display: inline-block;
+  width: 300px;
+  height: 60px;
+  line-height: 56px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid #116466;
+  color: #116466;
+  font-size: 26px;
+  font-family: arial;
+  background: transparent;
+  text-transform: uppercase;
+  transition: all .35s;
+}
+
+.buttons-block button:not([disabled]):hover {
+  color: #fff;
+  background-color: #116466;
+  cursor: pointer;
+}
+
+.message {
+  margin: 15px 0;
+  height: 38.40px;
+  font-size: 25px;
+  color: red;
+  font-style: italic;
+  text-transform:initial;
+}
+
+.result-block {
+  font-size: 24px;
+  font-style: italic;
+  background-color: #F7F2E8;
+  max-width: 100%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.result-frame {
+  margin: 30px 0;
+  padding: 14px;
+}
+
+.table {
+  margin: 30px 0;
+  max-width: 100%;
+}
+
+.table-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.table-titles {
+  background-color: #116466;
+  color: #FFF;
+  padding: 10px 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.table-frame {
+  padding: 5px;
+  margin: 3px 0;
+  border: #116466 solid 1px;
+  border-radius: 5px;
+}
+
+@media all and (max-width: 1025px) {
+  .info-block {
+    max-width: 800px;
+  }
+
+  .quote-text {
+    width: 300px;
+    margin-left: 20px;
+  }
+
+  .buttons-block button {
+    width: 210px;
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 769px) {
+  .info-block {
+    max-width: 690px;
+  }
+
+  .body {
+    font-size: 16px;
+  }
+
+  .buttons-block button {
+    width: 180px;
+    font-size: 20px;
+  }
+
+  .message {
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 426px) {
+
+  .body {
+    font-size: 16px;
+  }
+
+  .info-block {
+    width: 92%;
+    text-align: center;
+  }
+
+  .wrapper-block {
+    padding: 50px 15px;
+  }
+
+  .app {
+    margin-top: 75px;
+  }
+
+  .radio-days-block, .radio-units {
+    margin-top: 50px;
+  }
+
+  .inputs input[type="date"] {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .radio-items label {
+    padding-top: 10px;
+  }
+
+  #form-select {
+    margin: 0;
+  }
+
+  .quote, .inputs, .radio-items, .buttons-block {
+    flex-direction: column;
+  }
+
+  .quote-text {
+    margin-left: 0;
+  }
+
+  .inputs {
+    margin: 30px auto;
+  }
+
+  .radio-days {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+  }
+
+  .radio-items {
+    align-items: baseline;
+  }
+
+  .icon {
+    margin: 20px 0;
+  };
+
+  .buttons-block {
+    padding: 0;
+  }
+
+  .buttons-block button {
+    margin: 10px auto;
+    width: 100%;
+  }
+
+  .message {
+    font-size: 18px;
+  }
+
+  .table-item {
+    grid-gap: 5px;
+  }
+}
+
+@media all and (max-width: 376px) {
+  .message {
+    font-size: 16px;
+  }
+
+  .buttons-block button {
+    border: 2px solid #116466;
+  }
+
+  .buttons-block button:disabled {
+    border: 2px solid #D9B08C;
+  }
+}
+
+@media all and (max-width: 321px) {
+  .radio-days {
+    width: 270px;
+  }
+
+  .image-2 {
+    width: 260px;
+  }
+
+  .quote-text {
+    width: 260px;
+  }
+}

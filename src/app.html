@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Застосунок для розрахунку часу">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/icons/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Time measure</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body class="body">
+  
+  <section class="info-block app-block">
+    <div class="wrapper-block">
+      <h1 class="app-title">Time Measure <span class="color-text">Application</span>
+      </h1>
+      <div class="quote">
+        <div class="image-2"></div>
+        <h3 class="quote-text">"Коли ми витрачаємо час на планування, його стає більше."</h3>
+      </div>
+      <div class="app">
+        <h2>Оберіть дати</h2>
+        <form action="" method="">
+
+          <div class="">
+            <div class="inputs ">
+              <img class="icon" src="./img/icons/3.svg" alt="clock">
+              <input class="" type="date" name="dateBefore" id="dateBefore">
+              <input class="" type="date" name="dateAfter" id="dateAfter">
+            </div>
+          </div>
+
+          <div class="radio-days-block">
+            <h2>Оберіть які дні врахувати</h2>
+            <div class="radio-days inputs">
+              <img class="icon" src="./img/icons/4.svg" alt="calendar">
+              <div class="radio-items">
+                <div>
+                  <input type="radio" id="allDays" name="countDays" value="allDays" class="option-input radio" checked>
+                  <label for="allDays">Всі Дні</label>
+                </div>
+                <div>
+                  <input type="radio" id="weekDays" name="countDays" value="weekDays" class="option-input radio">
+                  <label for="weekDays">Будні Дні</label>
+                </div>
+                <div>
+                  <input type="radio" id="weekEnd" name="countDays" value="weekEnd" class="option-input radio">
+                  <label for="weekEnd">Вихідні Дні</label>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="radio-units inputs">
+            <img class="icon" src="./img/icons/5.svg" alt="calendar">
+
+            <select class="form-select" id="form-select" aria-label="Default select example">
+              <option id="none" selected>Оберіть одиницю часу</option>
+              <option value="1" id="days">Дні</option>
+              <option value="2" id="hours">Години</option>
+              <option value="3" id="minutes">Хвилини</option>
+              <option value="4" id="seconds">Секунди</option>
+            </select>
+
+          </div>
+      
+          <div class="buttons-block">
+            <button type="submit" id="btn" disabled>Розрахувати</button>
+            <button class="weekBtn" disabled>Тиждень</button>
+            <button class="monthBtn" disabled>Місяць</button>
+          </div>
+
+        </form>
+
+        <h2 class="message"></h2>
+      
+        <h2>Проміжок часу між обраними датами:</h2>
+        <div class="result-block">
+        </div>
+      
+        <div class="table">
+          <div class="table-item">
+            <div class="table-titles">Початкова Дата</div>
+            <div class="table-titles">Кінцева Дата</div>
+            <div class="table-titles">Результат</div>
+          </div>
+          <div class="table-item">
+            <div class="startDate"></div>
+            <div class="endDate"></div>
+            <div class="result"></div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
